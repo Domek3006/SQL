@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" type="text/css">
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+</head>
+<body>
+<div class="w3-bar w3-border w3-blue">
+    <a href="../casinos" class="w3-bar-item w3-button w3-hover-teal">Kasyna</a>
+    <a href="../games" class="w3-bar-item w3-button w3-hover-teal">Gry</a>
+    <a href="../chips" class="w3-bar-item w3-button w3-hover-teal">Żetony</a>
+    <a href="../employees" class="w3-bar-item w3-button w3-hover-teal">Pracownicy</a>
+    <!--<a href="../enforcers" class="w3-bar-item w3-button w3-hover-teal">Zarządcy</a>-->
+    <a href="../restaurants" class="w3-bar-item w3-button w3-hover-teal">Restauracje</a>
+    <a href="#" class="w3-bar-item w3-button w3-hover-teal w3-teal">Bary</a>
+    <a href="../guests" class="w3-bar-item w3-button w3-hover-teal">Goście</a>
+    <a href="../reviews" class="w3-bar-item w3-button w3-hover-teal">Recenzje</a>
+    <a href="../debtors" class="w3-bar-item w3-button w3-hover-teal">Dłużnicy</a>
+    <a href="../partners" class="w3-bar-item w3-button w3-hover-teal">Partnerzy</a>
+</div>
+<div class="w3-responsive">
+    <table class="w3-table-all w3-hoverable">
+        <tr class="w3-gray">
+            <th>Nazwa</th>
+            <th>Kasyno</th>
+            <th>Drinki</th>
+            <th> </th>
+            <th> </th>
+        </tr>
+        <tr th:each="bar : ${bars}">
+            <td th:text="${bar[0].name}"></td>
+            <td th:text="${bar[1].name}"></td>
+            <td><a th:href="@{../drinks/?(rest=${bar[0].id_bar},cas=${bar[1].id_cas})}">Zobacz</a></td>
+            <td><a th:href="@{../update/?(id=${bar[0].id_bar},type='Bar')}">Edytuj</a></td>
+            <td><a th:href="@{../delete/?(id=${bar[0].id_bar},type='bars')}">Usuń</a></td>
+        </tr>
+    </table>
+</div>
+<div class="w3-padding">
+    <a href="../insert?type=Bar" class="w3-button w3-circle w3-gray">+</a>
+</div>
+</body>
+</html>

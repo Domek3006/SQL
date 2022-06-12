@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" type="text/css">
+    <meta charset="UTF-8">
+    <title>Update Form</title>
+</head>
+<body>
+<div class="w3-panel w3-gray">
+    <h1 class="w3-text-black" style="text-shadow:1px 1px 0 #444">
+        <b>Zmodyfikuj Recenzję</b>
+    </h1>
+</div>
+<form action="#" th:action="@{/upReview}" class="w3-container" method="post" th:object="${review}">
+    <label for="desc" class="w3-text-indigo"><b>Recenzja</b></label>
+    <input class="w3-input w3-border" type="text" id="desc" th:field="*{desc}" th:placeholder="${oldDesc}"/>
+    <label for="stars" class="w3-text-indigo"><b>Gwiazdki</b></label>
+    <input class="w3-input w3-border" type="number" id="stars" th:field="*{stars}" th:placeholder="${oldStars}"/>
+    <div class="w3-padding-16">
+        <input type="submit" class="w3-btn w3-gray w3-padding" value="Zmień"/>
+        <a href="../reviews" class="w3-btn w3-gray w3-padding">Wróć</a>
+    </div>
+</form>
+</body>
+</html>

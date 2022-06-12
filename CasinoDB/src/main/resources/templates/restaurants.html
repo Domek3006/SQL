@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" type="text/css">
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+</head>
+<body>
+<div class="w3-bar w3-border w3-blue">
+    <a href="../casinos" class="w3-bar-item w3-button w3-hover-teal">Kasyna</a>
+    <a href="../games" class="w3-bar-item w3-button w3-hover-teal">Gry</a>
+    <a href="../chips" class="w3-bar-item w3-button w3-hover-teal">Żetony</a>
+    <a href="../employees" class="w3-bar-item w3-button w3-hover-teal">Pracownicy</a>
+    <!--<a href="../enforcers" class="w3-bar-item w3-button w3-hover-teal">Zarządcy</a>-->
+    <a href="#" class="w3-bar-item w3-button w3-hover-teal w3-teal">Restauracje</a>
+    <a href="../bars" class="w3-bar-item w3-button w3-hover-teal">Bary</a>
+    <a href="../guests" class="w3-bar-item w3-button w3-hover-teal">Goście</a>
+    <a href="../reviews" class="w3-bar-item w3-button w3-hover-teal">Recenzje</a>
+    <a href="../debtors" class="w3-bar-item w3-button w3-hover-teal">Dłużnicy</a>
+    <a href="../partners" class="w3-bar-item w3-button w3-hover-teal">Partnerzy</a>
+</div>
+<div class="w3-responsive">
+    <table class="w3-table-all w3-hoverable">
+        <tr class="w3-gray">
+            <th>Nazwa</th>
+            <th>Przychody</th>
+            <th>Kasyno</th>
+            <th>Dania</th>
+            <th> </th>
+            <th> </th>
+        </tr>
+        <tr th:each="rest : ${restaurants}">
+            <td th:text="${rest[0].name}"></td>
+            <td th:text="${rest[0].income}"></td>
+            <td th:text="${rest[1].name}"></td>
+            <td><a th:href="@{../dishes/?(rest=${rest[0].id},cas=${rest[1].id_cas})}">Zobacz</a></td>
+            <td><a th:href="@{../update/?(id=${rest[0].id},type='Restaurant')}">Edytuj</a></td>
+            <td><a th:href="@{../delete/?(id=${rest[0].id},type='restaurants')}">Usuń</a></td>
+        </tr>
+    </table>
+</div>
+<div class="w3-padding">
+    <a href="../insert?type=Restaurant" class="w3-button w3-circle w3-gray">+</a>
+</div>
+</body>
+</html>

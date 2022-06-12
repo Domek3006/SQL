@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" type="text/css">
+    <meta charset="UTF-8">
+    <title>Input Form</title>
+</head>
+<body>
+    <div class="w3-panel w3-gray">
+        <h1 class="w3-text-black" style="text-shadow:1px 1px 0 #444">
+            <b>Dodaj Nowe Kasyno</b>
+        </h1>
+    </div>
+    <form action="#" th:action="@{/insCas}" class="w3-container" method="post" th:object="${casino}">
+        <label for="name" class="w3-text-indigo"><b>Nazwa kasyna</b></label>
+        <input class="w3-input w3-border" type="text" id="name" th:field="*{name}">
+
+        <label for="city" class="w3-text-indigo"><b>Miasto</b></label>
+        <input class="w3-input w3-border" type="text" id="city" th:field="*{city}">
+
+        <label for="seats" class="w3-text-indigo"><b>Liczba miejsc</b></label>
+        <input class="w3-input w3-border" type="number" id="seats" th:field="*{seats}">
+
+        <div th:if="${#fields.hasErrors('global')}">
+            <h3>Nie udało się dodać rekordu, z powodu błędów:</h3>
+            <p th:each="err : ${#fields.errors('global')}" th:text="${err}"
+               class="error" />
+        </div>
+
+        <div class="w3-padding-16">
+        <input type="submit" class="w3-btn w3-gray w3-padding" value="Dodaj"/>
+        <a href="../casinos" class="w3-btn w3-gray w3-padding">Wróć</a>
+        </div>
+    </form>
+</body>
+</html>
